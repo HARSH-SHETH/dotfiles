@@ -24,6 +24,9 @@ set splitbelow splitright "Always open window on the right side in verticals spl
 set foldmethod=manual
 set showcmd "Show commands while typing in normal or visual mode 
 set foldlevelstart=0
+set showtabline=2
+set lazyredraw
+set hidden
 " }}}
 
 "ARROW KEY MAPPINGS{{{
@@ -36,7 +39,7 @@ set foldlevelstart=0
 "}}}
 
 "QUICK SAVE AND CLOSE MAPPINGS{{{
-  nmap <leader><leader> :w<CR>
+  nmap <leader><leader> :up<CR>
   nmap <leader>q :wq<CR>
 "}}}
 
@@ -61,13 +64,13 @@ set foldlevelstart=0
 
 "STATUS LINE{{{
   set laststatus=2	"show status line 
-  set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%) "Customized status line
-  hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+"  set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%) "Customized status line
+"  hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
 "}}}
 
 "COLORCOLUMN SETTINGS{{{
-  hi User1 term=none,bold cterm=none,bold ctermfg=none
-  let &colorcolumn=join(range(100,999),",") 
+"  hi User1 term=none,bold cterm=none,bold ctermfg=none
+"  let &colorcolumn=join(range(100,999),",") 
 "}}}
 "}}}
 
@@ -85,11 +88,11 @@ set foldlevelstart=0
 "ADD C-STYLE COMMENTS TO THE VISUALLY SELECTED TEXT{{{
 augroup COMMENT
   autocmd!
-  autocmd bufenter,bufread  *.ejs vnoremap <leader>/ <esc>`<i<%#<esc>`>a%><esc>
-  autocmd filetype javascript,cpp,css vnoremap <leader>/ <esc>`<i/*<esc>`>a*/<esc>
-  autocmd filetype html vnoremap <leader>/ <esc>`<i<!--<esc>`>a--><esc>
-  autocmd filetype vim vnoremap <leader>/ :norm i"<cr>
-  autocmd filetype conf vnoremap <leader>/ :norm! i#<cr>
+  autocmd bufenter,bufread  *.ejs vnoremap <buffer> <leader>/ <esc>`<i<%#<esc>`>a%><esc>
+  autocmd filetype javascript,cpp,css vnoremap <buffer> <leader>/ <esc>`<i/*<esc>`>a*/<esc>
+  autocmd filetype html vnoremap <buffer> <leader>/ <esc>`<i<!--<esc>`>a--><esc>
+  autocmd filetype vim vnoremap <buffer> <leader>/ :norm i"<cr>
+  autocmd filetype conf vnoremap <buffer> <leader>/ :norm! i#<cr>
 augroup end
 "}}}
 
@@ -104,7 +107,7 @@ augroup end
 "AUTOCMD TO COPY WHOLE FILE TO THE REGISTER{{{
 augroup CP
   autocmd!
-  autocmd filetype cpp nnoremap <leader>cp ggvg"+y
+  autocmd filetype cpp nnoremap <leader>cp ggvG"+y
 augroup end
 "}}}
 
@@ -122,8 +125,17 @@ augroup end
   augroup FILETYPE_EJS
     autocmd!
     autocmd BufEnter,BufNewFile,BufRead,BufWrite  *.ejs set filetype=ejs
+    autocmd filetype ejs vnoremap <leader>% <esc>`<i<% <esc> `>a %><esc>
     autocmd filetype ejs nnoremap <leader>% I<% <esc>A %><esc>
     autocmd filetype ejs inoremap <leader>% <%%><esc>hi
+  augroup end
+"}}}
+
+"MAPPINGS FOR LATEX{{{
+  augroup LATEX
+    autocmd!
+    autocmd filetype plaintex,tex nnoremap <buffer> <F5> :w<cr>:!pdflatex %<cr>
+    autocmd filetype plaintex,tex nnoremap <buffer> <silent> ,pdf :!zathura %:r.pdf<cr>
   augroup end
 "}}}
   
@@ -134,12 +146,15 @@ augroup end
   nnoremap - ddp
   nnoremap _ ddkP
   inoremap <c-u> <esc>viwUea
-  nnoremap <c-u> viwU
+"  nnoremap <c-u> viwU
+  nnoremap j gj
+  nnoremap k gk
   inoremap jk <esc>
   nnoremap H ^
   nnoremap L $
   nnoremap Y y$
-  nnoremap <leader>ev :vsp $MYVIMRC <cr>
+  nnoremap <leader>en :vsp $MYVIMRC <cr>
+  nnoremap <silent> <leader>ev :vsp /home/harsh/.vimrc <cr>
   nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
   "toggle folds using this
   nnoremap <silent> <space><space> za

@@ -31,13 +31,15 @@
 call plug#begin('~/.config/nvim/plugged/')
   Plug 'gruvbox-community/gruvbox'
   Plug 'sheerun/vim-polyglot'
-  Plug 'dylanaraps/wal.vim'
   Plug 'c0r73x/colorizer'
+  Plug 'itchyny/lightline.vim'
+  Plug 'sainnhe/forest-night'
+  Plug 'tpope/vim-commentary'
 call plug#end()
 "}}}
 
 "SET YOUR COLORSCHEME{{{
-colorscheme gruvbox
+"colorscheme gruvbox
 
 if (has("nvim"))
   let $nvim_tui_enable_true_color=1
@@ -46,6 +48,13 @@ if (has("termguicolors"))
   set termguicolors
 endif
 ""italics for my favorite color scheme
-let g:gruvbox_italic=1
+colorscheme forest-night
+"let g:gruvbox_italic=1
 ""}}}
+
+"LIGHTLINE SETTINGS{{{
+  let g:lightline = {
+    \ 'colorscheme': 'forest_night'
+    \ }
+"}}}
 
