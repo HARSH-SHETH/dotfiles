@@ -1,1 +1,0 @@
-/home/harsh/.config/nvim/init.vim
