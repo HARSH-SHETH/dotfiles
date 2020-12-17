@@ -76,39 +76,12 @@ set hidden
 
 "CUSTOM AUGROUPS{{{
 
-  "AUGROUP FOR VIM FILETYPE SPECIFIC SETTINGS {{{
-    augroup FILETYPE_VIM
-      autocmd!
-      autocmd filetype vim setlocal foldmethod=marker
-      "mapping to the default behaviour
-      autocmd filetype vim inoremap <buffer> " "
-    augroup end
-  "}}}
-  
-"ADD C-STYLE COMMENTS TO THE VISUALLY SELECTED TEXT{{{
-augroup COMMENT
-  autocmd!
-  autocmd bufenter,bufread  *.ejs vnoremap <buffer> <leader>/ <esc>`<i<%#<esc>`>a%><esc>
-  autocmd filetype javascript,cpp,css vnoremap <buffer> <leader>/ <esc>`<i/*<esc>`>a*/<esc>
-  autocmd filetype html vnoremap <buffer> <leader>/ <esc>`<i<!--<esc>`>a--><esc>
-  autocmd filetype vim vnoremap <buffer> <leader>/ :norm i"<cr>
-  autocmd filetype conf vnoremap <buffer> <leader>/ :norm! i#<cr>
-augroup end
-"}}}
-
 "SAVE FOLD PERMANENTLY WITH THESE TWO LINES {{{
   augroup SAVE_SESSION
     autocmd!
     autocmd BufWinLeave *.* mkview    
     autocmd BufWinEnter *.* silent! loadview
   augroup end
-"}}}
-
-"AUTOCMD TO COPY WHOLE FILE TO THE REGISTER{{{
-augroup CP
-  autocmd!
-  autocmd filetype cpp nnoremap <leader>cp ggvG"+y
-augroup end
 "}}}
 
 "SYNTAX CONFIGURATION FOR DIFFERENT FILES{{{
@@ -131,14 +104,6 @@ augroup end
   augroup end
 "}}}
 
-"MAPPINGS FOR LATEX{{{
-  augroup LATEX
-    autocmd!
-    autocmd filetype plaintex,tex nnoremap <buffer> <F5> :w<cr>:!pdflatex %<cr>
-    autocmd filetype plaintex,tex nnoremap <buffer> <silent> ,pdf :!zathura %:r.pdf<cr>
-  augroup end
-"}}}
-  
 "}}}
 
 "MAPPINGS FROM \"LEARN VIMSCRIPT THE HARDWAY\"{{{
@@ -175,8 +140,3 @@ augroup end
       onoremap il' :execute "normal! ?'\rn:noh\rvi'"<CR>
       onoremap il< :execute "normal! ?>\r:noh\rvi<"<CR>
   "}}}
-
-"PERSONAL CODE SNIPPETS{{{
-  "Inserts a basic boilerplate for html 
-  nnoremap <leader>html :-1read /home/harsh/.boiler_plate.html<CR>3jf>a
-"}}}
