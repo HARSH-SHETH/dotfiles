@@ -18,6 +18,8 @@
   set cursorline nocursorcolumn
   "undofile after closing
   set undofile
+  "awesome inccomand
+  set inccommand=split
 "}}}
 
 "TERMINAL RELATED KEY MAPPINGS{{{
