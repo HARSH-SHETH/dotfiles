@@ -24,7 +24,7 @@
 
 "TERMINAL RELATED KEY MAPPINGS{{{
   tnoremap <leader>n <c-\><c-n>:b#<cr>
-  nnoremap <leader>t :w<cr>:terminal<cr>a
+  nnoremap <leader>t :w<cr>:tabnew<cr>:terminal<cr>a
   nnoremap <leader>n :b#<cr>
   tnoremap <esc> <c-\><c-n>
 "}}}
@@ -37,6 +37,7 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'itchyny/lightline.vim'
   Plug 'sainnhe/forest-night'
   Plug 'tpope/vim-commentary'
+  Plug '~/opensource/vimscript/vimtodo/'
 call plug#end()
 "}}}
 

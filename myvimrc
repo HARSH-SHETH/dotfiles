@@ -21,7 +21,7 @@ set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 set scrolloff=2  	"forces vim to keep the cursor two lines above or below the file
 set background=dark
 set splitbelow splitright "Always open window on the right side in verticals split and below in horizontal split
-set foldmethod=manual
+" set foldmethod=manual
 set showcmd "Show commands while typing in normal or visual mode 
 set foldlevelstart=0
 set showtabline=2
@@ -140,3 +140,14 @@ set hidden
       onoremap il' :execute "normal! ?'\rn:noh\rvi'"<CR>
       onoremap il< :execute "normal! ?>\r:noh\rvi<"<CR>
   "}}}
+
+" WINDOW SWITCH MAPPINGS{{{
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-l> <C-w>l
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-H> <C-w>H
+  nnoremap <A-L> <C-w>L
+  nnoremap <A-J> <C-w>J
+  nnoremap <A-K> <C-w>K
+" " }}}

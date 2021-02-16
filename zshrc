@@ -120,7 +120,7 @@ alias sfz='source ~/.zshrc; cat ~/todo.list'
 alias cfa='nvim ~/.config/alacritty/alacritty.yml'
 alias ssrg='sudo systemctl restart gdm.service'
 alias mysql='sudo mysql -u root -p'
-alias etl='vim ~/todo.list'
+alias etl='nvim ~/todo.list'
 alias gpp='g++'
 #to turn off the xterm signals 
 stty -ixon 
