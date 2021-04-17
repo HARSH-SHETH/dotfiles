@@ -1,1 +1,154 @@
-/home/harsh/dotfiles/myvimrc
+
+"                                   '##::::'##:'####:'##::::'##:'########:::'######::
+"                                    ##:::: ##:. ##:: ###::'###: ##.... ##:'##... ##:
+"                                    ##:::: ##:: ##:: ####'####: ##:::: ##: ##:::..::
+"                                    ##:::: ##:: ##:: ## ### ##: ########:: ##::::::: 
+"                                   . ##:: ##::: ##:: ##. #: ##: ##.. ##::: ##:::::::
+"                                   :. ## ##:::: ##:: ##:.:: ##: ##::. ##:: ##::: ##:
+"                                   ::. ###::::'####: ##:::: ##: ##:::. ##:. ######::
+"                                   :::...:::::....::..:::::..::..:::::..:::......:::
+" BASIC SETTINGS -------------------{{{
+let mapleader =","
+set hls incsearch ignorecase smartcase
+set number relativenumber "shows absolute and relative number at the same time
+set numberwidth=4	"sets the width of the column displaying numbers to 2
+filetype plugin on
+filetype plugin indent on
+syntax enable
+set autoindent 
+set backspace=indent,eol,start  "Allow backspace over everything in insert mode
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab 
+set scrolloff=2  	"forces vim to keep the cursor two lines above or below the file
+set background=dark
+set splitbelow splitright "Always open window on the right side in verticals split and below in horizontal split
+" set foldmethod=manual
+set showcmd "Show commands while typing in normal or visual mode 
+set foldlevelstart=0
+set showtabline=1
+set lazyredraw
+set hidden
+set completeopt=menuone,noinsert,noselect
+" }}}
+
+"ARROW KEY MAPPINGS{{{
+  "bindings to increase decrease window widths
+    nnoremap <silent> <up> <c-w>>
+    nnoremap <silent> <down> <c-w><
+  "mapping arrow keys to switch buffers
+    nnoremap <right> :bn<cr>
+    nnoremap <left> :bp<cr>
+"}}}
+
+"QUICK SAVE AND CLOSE MAPPINGS{{{
+  nmap <leader><leader> :up<CR>
+  nmap <leader>q :wq<CR>
+"}}}
+
+" CUSTOM KEY MAPPINGS FOR AUTO-CLOSING OF BRACKETS AND QUOTES{{{
+  inoremap { {}<esc>i
+  inoremap } <right>
+  inoremap [ []<esc>i
+  inoremap ] <right>
+  inoremap ( ()<esc>i
+  inoremap ) <right>
+  inoremap " ""<esc>i
+  inoremap ' ''<esc>i
+" }}}
+
+"WILDMENU STATUS LINE AND COLORCOLUMN{{{
+
+"WILDMENU SETTINGS{{{
+  set path+=**
+  set wildmenu
+  set wildmode=longest:full,full
+"}}}
+
+"STATUS LINE{{{
+  set laststatus=2	"show status line 
+"  set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%) "Customized status line
+"  hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
+"}}}
+
+"COLORCOLUMN SETTINGS{{{
+"  hi User1 term=none,bold cterm=none,bold ctermfg=none
+"  let &colorcolumn=join(range(100,999),",") 
+"}}}
+"}}}
+
+"CUSTOM AUGROUPS{{{
+
+"SAVE FOLD PERMANENTLY WITH THESE TWO LINES {{{
+  augroup SAVE_SESSION
+    autocmd!
+    autocmd BufWinLeave *.* mkview    
+    autocmd BufWinEnter *.* silent! loadview
+  augroup end
+"}}}
+
+"SYNTAX CONFIGURATION FOR DIFFERENT FILES{{{
+  augroup SYNTAX_CONF
+    autocmd!
+    autocmd filetype html,ejs inoremap < <><esc>i
+    autocmd filetype html,ejs inoremap > <right>
+    autocmd filetype html,ejs setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+    autocmd filetype html,ejs onoremap <buffer> in< :execute "normal! /<\r:noh\rvi<"<CR>
+  augroup end
+"}}}
+
+"SNIPPETS FOR .EJS FILE{{{
+  augroup FILETYPE_EJS
+    autocmd!
+    autocmd BufEnter,BufNewFile,BufRead,BufWrite  *.ejs set filetype=ejs
+    autocmd filetype ejs vnoremap <leader>% <esc>`<i<% <esc> `>a %><esc>
+    autocmd filetype ejs nnoremap <leader>% I<% <esc>A %><esc>
+    autocmd filetype ejs inoremap <leader>% <%%><esc>hi
+  augroup end
+"}}}
+
+"}}}
+
+"MAPPINGS FROM \"LEARN VIMSCRIPT THE HARDWAY\"{{{
+  let maplocalleader = "\\"
+  nnoremap - ddp
+  nnoremap _ ddkP
+  inoremap <c-u> <esc>viwUea
+"  nnoremap <c-u> viwU
+  nnoremap j gj
+  nnoremap k gk
+  inoremap jk <esc>
+  nnoremap H ^
+  nnoremap L $
+  nnoremap Y y$
+  nnoremap <leader>en :vsp $MYVIMRC <cr>
+  nnoremap <silent> <leader>ev :vsp /home/harsh/.vimrc <cr>
+  nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
+  "toggle folds using this
+  nnoremap <silent> <space><space> za
+"}}}
+
+  "OPERATOR PENDING MAPPINGS {{{
+    "visually select next pair of {parens, brackets, quotations, tags}
+      onoremap in( :execute "normal! /(\r:noh\rvi("<CR>
+      onoremap in{ :execute "normal! /{\r:noh\rvi{"<CR>
+      onoremap in[ :execute "normal! /[\r:noh\rvi["<CR>
+      onoremap in" :execute "normal! /\"\rn:noh\rvi\""<CR>
+      onoremap in' :execute "normal! /'\rn:noh\rvi'"<CR>
+      onoremap in< :execute "normal! /<\r:noh\rvi<"<CR>
+      onoremap il( :execute "normal! ?(\r:noh\rvi("<CR>
+      onoremap il{ :execute "normal! ?{\r:noh\rvi{"<CR>
+      onoremap il[ :execute "normal! ?[\r:noh\rvi["<CR>
+      onoremap il" :execute "normal! ?\"\rn:noh\rvi\""<CR>
+      onoremap il' :execute "normal! ?'\rn:noh\rvi'"<CR>
+      onoremap il< :execute "normal! ?>\r:noh\rvi<"<CR>
+  "}}}
+
+" WINDOW SWITCH MAPPINGS{{{
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-l> <C-w>l
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-H> <C-w>H
+  nnoremap <A-L> <C-w>L
+  nnoremap <A-J> <C-w>J
+  nnoremap <A-K> <C-w>K
+" " }}}
