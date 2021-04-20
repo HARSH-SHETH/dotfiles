@@ -120,7 +120,7 @@ set completeopt=menuone,noinsert,noselect
   nnoremap L $
   nnoremap Y y$
   nnoremap <leader>en :vsp $MYVIMRC <cr>
-  nnoremap <silent> <leader>ev :vsp /home/harsh/.vimrc <cr>
+  nnoremap <silent> <leader>ev :vsp /home/harsh/.vim/.vimrc <cr>
   nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
   "toggle folds using this
   nnoremap <silent> <space><space> za
