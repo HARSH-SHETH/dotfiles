@@ -54,7 +54,6 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-""italics for my favorite color scheme
 colorscheme everforest
 "let g:gruvbox_italic=1
 ""}}}

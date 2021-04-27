@@ -124,6 +124,7 @@ set completeopt=menuone,noinsert,noselect
   nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
   "toggle folds using this
   nnoremap <silent> <space><space> za
+  nnoremap <leader><space> :FZF<cr>
 "}}}
 
   "OPERATOR PENDING MAPPINGS {{{

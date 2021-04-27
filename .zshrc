@@ -30,6 +30,8 @@ alias cfv='nvim ~/.vim/vimrc'
 alias cfz='nvim ~/.zshrc'
 alias sfz='source ~/.zshrc'
 alias cfa='nvim ~/.config/alacritty/alacritty.yml'
+alias cft='nvim ~/.tmux.conf'
+alias tmux='tmux -2'
 #ALIAS FOR MANAGING DOTFILES
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #ALIAS FOR TESTING NEOVIM
@@ -37,3 +39,7 @@ alias tj='VIMRUNTIME=runtime /home/harsh/opensource/github_contrib/neovim/build/
 
 # MY ENVIRONMENT VARIABLES
 export FZF_DEFAULT_COMMAND='find .'
+
+if (( $SHLVL == 1 )); then
+  tmux
+fi
