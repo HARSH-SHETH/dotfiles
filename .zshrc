@@ -39,6 +39,7 @@ alias tj='VIMRUNTIME=runtime /home/harsh/opensource/github_contrib/neovim/build/
 
 # MY ENVIRONMENT VARIABLES
 export FZF_DEFAULT_COMMAND='find .'
+export TERM=tmux-256color
 
 if (( $SHLVL == 1 )); then
   tmux
