@@ -42,6 +42,7 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'nvim-lua/completion-nvim'
   " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+  Plug 'https://github.com/cohama/lexima.vim'
 call plug#end()
 "}}}
 
@@ -91,3 +92,4 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " }}}
+"

@@ -45,15 +45,15 @@ set completeopt=menuone,noinsert,noselect
 "}}}
 
 " CUSTOM KEY MAPPINGS FOR AUTO-CLOSING OF BRACKETS AND QUOTES{{{
-  inoremap { {}<esc>i
-  inoremap } <right>
-  inoremap [ []<esc>i
-  inoremap ] <right>
-  inoremap ( ()<esc>i
-  inoremap ) <right>
-  inoremap " ""<esc>i
-  inoremap ' ''<esc>i
-" }}}
+  " inoremap { {}<esc>i
+  " inoremap } <right>
+  " inoremap [ []<esc>i
+  " inoremap ] <right>
+  " inoremap ( ()<esc>i
+  " inoremap ) <right>
+  " inoremap " ""<esc>i
+  " inoremap ' ''<esc>i
+" " }}}
 
 "WILDMENU STATUS LINE AND COLORCOLUMN{{{
 
