@@ -153,3 +153,9 @@ set completeopt=menuone,noinsert,noselect
   nnoremap <A-J> <C-w>J
   nnoremap <A-K> <C-w>K
 " " }}}
+
+" LATEX SPECIFIC MAPPINGS{{{
+  augroup LATEX
+    autocmd filetype tex nnoremap <F5> :!pdflatex %<cr>
+  augroup end
+" }}}

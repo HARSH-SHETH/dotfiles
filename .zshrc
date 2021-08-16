@@ -21,6 +21,12 @@ change_tmux_working_dir () {
   tmux command-prompt "attach -c %1 $PWD"
 }
 
+# COMPILE CPP FILES
+gpp () {
+  g++ "$1" -o "$(basename "$1" .cpp)"
+  ./$(basename "$1" .cpp)
+}
+
 # MY ALIASES
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -55,3 +61,6 @@ export TERM=tmux-256color
 if (( $SHLVL == 1 )); then
   tmux
 fi
+
+# z - jump around
+source /usr/share/z/z.sh
