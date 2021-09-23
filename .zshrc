@@ -23,8 +23,15 @@ change_tmux_working_dir () {
 
 # COMPILE CPP FILES
 gpp () {
-  g++ "$1" -o "$(basename "$1" .cpp)"
-  ./$(basename "$1" .cpp)
+  g++ "$1"
+  if [ $? -eq 0 ] 
+  then
+    echo "program compiled succesfully"
+    echo "Running binary -------\n"
+    ./a.out
+  else
+    echo "error while compiling source file "$1" "
+  fi
 }
 
 # MY ALIASES
@@ -57,6 +64,7 @@ alias chtmuxdir='change_tmux_working_dir'
 # MY ENVIRONMENT VARIABLES
 export FZF_DEFAULT_COMMAND='find .'
 export TERM=tmux-256color
+export EDITOR=/usr/bin/nvim
 
 if (( $SHLVL == 1 )); then
   tmux
