@@ -66,6 +66,12 @@ export FZF_DEFAULT_COMMAND='find .'
 export TERM=tmux-256color
 export EDITOR=/usr/bin/nvim
 
+# NVIM LSP SERVERS PATH
+NVIM_DATA=$HOME/.local/share/nvim/lsp_servers
+LSP_GO_PLS=$NVIM_DATA/go
+LSP_TSSERVER=$NVIM_DATA/tsserver/node_modules/.bin
+export PATH=$PATH:$LSP_GO_PLS:$LSP_TSSERVER
+
 if (( $SHLVL == 1 )); then
   tmux
 fi

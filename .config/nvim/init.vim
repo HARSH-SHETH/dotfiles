@@ -31,14 +31,12 @@
 
 "VIM-PLUG FOR MANAGING PLUGINS{{{
 call plug#begin('~/.config/nvim/plugged/')
-  Plug 'gruvbox-community/gruvbox'
-  " Plug 'sheerun/vim-polyglot'
   Plug 'c0r73x/colorizer'
   Plug 'itchyny/lightline.vim'
   Plug 'sainnhe/everforest'
   Plug 'tpope/vim-commentary'
-  Plug '~/opensource/vimscript/vimtodo/'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'nvim-lua/completion-nvim'
   " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
@@ -55,8 +53,11 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+
 colorscheme everforest
-"let g:gruvbox_italic=1
 ""}}}
 
 "LIGHTLINE SETTINGS{{{
@@ -78,6 +79,7 @@ colorscheme everforest
 lua << EOF
   local on_attach = require'completion'.on_attach
   require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+  require 'lspconfig'.gopls.setup{}
 EOF
 " }}}
 

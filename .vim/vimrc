@@ -44,37 +44,6 @@ set completeopt=menuone,noinsert,noselect
   nmap <leader>q :wq<CR>
 "}}}
 
-" CUSTOM KEY MAPPINGS FOR AUTO-CLOSING OF BRACKETS AND QUOTES{{{
-  " inoremap { {}<esc>i
-  " inoremap } <right>
-  " inoremap [ []<esc>i
-  " inoremap ] <right>
-  " inoremap ( ()<esc>i
-  " inoremap ) <right>
-  " inoremap " ""<esc>i
-  " inoremap ' ''<esc>i
-" " }}}
-
-"WILDMENU STATUS LINE AND COLORCOLUMN{{{
-
-"WILDMENU SETTINGS{{{
-  set path+=**
-  set wildmenu
-  set wildmode=longest:full,full
-"}}}
-
-"STATUS LINE{{{
-  set laststatus=2	"show status line 
-"  set statusline=%<%f%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%) "Customized status line
-"  hi User1 term=inverse,bold cterm=inverse,bold ctermfg=red
-"}}}
-
-"COLORCOLUMN SETTINGS{{{
-"  hi User1 term=none,bold cterm=none,bold ctermfg=none
-"  let &colorcolumn=join(range(100,999),",") 
-"}}}
-"}}}
-
 "CUSTOM AUGROUPS{{{
 
 "SAVE FOLD PERMANENTLY WITH THESE TWO LINES {{{
@@ -118,7 +87,8 @@ set completeopt=menuone,noinsert,noselect
   inoremap jk <esc>
   nnoremap H ^
   nnoremap L $
-  nnoremap Y y$
+  nnoremap y "+y
+  nmap Y y$
   nnoremap <leader>en :vsp $MYVIMRC <cr>
   nnoremap <silent> <leader>ev :vsp /home/harsh/.vim/vimrc <cr>
   nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
