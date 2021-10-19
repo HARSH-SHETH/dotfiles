@@ -32,17 +32,38 @@
 "VIM-PLUG FOR MANAGING PLUGINS{{{
 call plug#begin('~/.config/nvim/plugged/')
   Plug 'c0r73x/colorizer'
-  Plug 'itchyny/lightline.vim'
+  Plug 'hoob3rt/lualine.nvim'
   Plug 'sainnhe/everforest'
   Plug 'tpope/vim-commentary'
+
+  "LSP 
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
-  Plug 'nvim-lua/completion-nvim'
+
+  "AUTOCOMPLETION USING NVIM-CMP
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+
+  "TELESCOPE PLUGIN
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+
   " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
   Plug 'https://github.com/cohama/lexima.vim'
 call plug#end()
 "}}}
+
+" LUA CONFIG AND PLUGINS MAPPINGS{{{
+  lua require('config')
+  " TELESCOPE MAPPINGS
+  " Find files using Telescope command-line sugar.
+  nnoremap <leader>tf <cmd>Telescope find_files<cr>
+  nnoremap <leader>tg <cmd>Telescope git_files<cr>
+  nnoremap <leader>tb <cmd>Telescope buffers<cr>
+  nnoremap <leader>th <cmd>Telescope help_tags<cr>
+" }}}
 
 "SET YOUR COLORSCHEME{{{
 "colorscheme gruvbox
@@ -60,12 +81,6 @@ let g:everforest_enable_italic = 1
 colorscheme everforest
 ""}}}
 
-"LIGHTLINE SETTINGS{{{
-  let g:lightline = {
-    \ 'colorscheme': 'everforest'
-    \ }
-"}}}
-
 " CUSTOM AUGROUPS{{{
 " HIGHLIGHT YANKED TEXT {{{
   augroup yank
@@ -75,23 +90,3 @@ colorscheme everforest
 " }}}
 " }}}
 
-" LSP SETUP{{{
-lua << EOF
-  local on_attach = require'completion'.on_attach
-  require'lspconfig'.tsserver.setup{ on_attach=on_attach }
-  require 'lspconfig'.gopls.setup{}
-EOF
-" }}}
-
-" TREESITTER CONFIGURATION{{{
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  -- Modules and its options go here
-  highlight = { enable = true },
-  incremental_selection = { enable = true },
-  textobjects = { enable = true },
-}
-EOF
-
-" }}}
-"

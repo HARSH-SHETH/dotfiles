@@ -4,10 +4,12 @@ USE_POWERLINE="true"
 if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
   source /usr/share/zsh/manjaro-zsh-config
 fi
-# Use manjaro zsh prompt
+Use manjaro zsh prompt
 if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 bindkey -v
 
@@ -77,4 +79,5 @@ if (( $SHLVL == 1 )); then
 fi
 
 # z - jump around
+POWERLINE9K_SHORTEN_STRATEGY=truncate_to_last
 source /usr/share/z/z.sh

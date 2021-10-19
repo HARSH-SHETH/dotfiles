@@ -28,6 +28,7 @@ set showtabline=1
 set lazyredraw
 set hidden
 set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 " }}}
 
 "ARROW KEY MAPPINGS{{{
@@ -40,8 +41,8 @@ set completeopt=menuone,noinsert,noselect
 "}}}
 
 "QUICK SAVE AND CLOSE MAPPINGS{{{
-  nmap <leader><leader> :up<CR>
-  nmap <leader>q :wq<CR>
+  nnoremap <leader><leader> :up<CR>
+  nnoremap <leader>q :wq<CR>
 "}}}
 
 "CUSTOM AUGROUPS{{{
@@ -87,8 +88,10 @@ set completeopt=menuone,noinsert,noselect
   inoremap jk <esc>
   nnoremap H ^
   nnoremap L $
-  nnoremap y "+y
-  nmap Y y$
+  nnoremap <leader>y "+y
+  vnoremap <leader>y "+y
+  nnoremap <leader>Y "+y$
+  nnoremap Y y$
   nnoremap <leader>en :vsp $MYVIMRC <cr>
   nnoremap <silent> <leader>ev :vsp /home/harsh/.vim/vimrc <cr>
   nnoremap <leader>sv :source $MYVIMRC <cr>:noh<cr>:<bs>
