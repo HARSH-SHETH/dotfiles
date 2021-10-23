@@ -41,9 +41,11 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'williamboman/nvim-lsp-installer'
 
   "AUTOCOMPLETION USING NVIM-CMP
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-nvim-lua'
 
   "TELESCOPE PLUGIN
   Plug 'nvim-lua/plenary.nvim'
@@ -51,7 +53,8 @@ call plug#begin('~/.config/nvim/plugged/')
 
   " We recommend updating the parsers on update
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-  Plug 'https://github.com/cohama/lexima.vim'
+  " Plug 'https://github.com/cohama/lexima.vim'
+  Plug 'windwp/nvim-autopairs'
 call plug#end()
 "}}}
 
