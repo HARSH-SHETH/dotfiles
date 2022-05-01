@@ -17,7 +17,7 @@ filetype plugin indent on
 syntax enable
 set autoindent 
 set backspace=indent,eol,start  "Allow backspace over everything in insert mode
-set shiftwidth=2 tabstop=2 softtabstop=2 expandtab 
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 set scrolloff=2  	"forces vim to keep the cursor two lines above or below the file
 set background=dark
 set splitbelow splitright "Always open window on the right side in verticals split and below in horizontal split
@@ -29,6 +29,10 @@ set lazyredraw
 set hidden
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
+set scrolloff=8
+set mouse=a " Enable your mouse
+set iskeyword+=- " treat dash seperated words as text object"
+set confirm
 " }}}
 
 "ARROW KEY MAPPINGS{{{
@@ -48,11 +52,11 @@ set shortmess+=c
 "CUSTOM AUGROUPS{{{
 
 "SAVE FOLD PERMANENTLY WITH THESE TWO LINES {{{
-  augroup SAVE_SESSION
-    autocmd!
-    autocmd BufWinLeave *.* mkview    
-    autocmd BufWinEnter *.* silent! loadview
-  augroup end
+  " augroup SAVE_SESSION
+  "   autocmd!
+  "   autocmd BufWinLeave *.* mkview    
+  "   autocmd BufWinEnter *.* silent! loadview
+  " augroup end
 "}}}
 
 "SYNTAX CONFIGURATION FOR DIFFERENT FILES{{{
@@ -62,6 +66,7 @@ set shortmess+=c
     autocmd filetype html,ejs inoremap > <right>
     autocmd filetype html,ejs setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
     autocmd filetype html,ejs onoremap <buffer> in< :execute "normal! /<\r:noh\rvi<"<CR>
+    autocmd filetype vim set foldmethod=marker
   augroup end
 "}}}
 

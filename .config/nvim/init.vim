@@ -20,13 +20,15 @@
   set undofile
   "awesome inccomand
   set inccommand=split
+  " match CursorColumn /^\ \+/ 
 "}}}
 
 "TERMINAL RELATED KEY MAPPINGS{{{
   tnoremap <leader>n <c-\><c-n>:b#<cr>
-  nnoremap <leader>t :w<cr>:tabnew<cr>:terminal<cr>a
+  nnoremap <leader>t :tabnew<cr>:terminal<cr>a
   nnoremap <leader>n :b#<cr>
   tnoremap <esc> <c-\><c-n>
+  set shell=/usr/bin/fish
 "}}}
 
 "VIM-PLUG FOR MANAGING PLUGINS{{{
@@ -35,10 +37,16 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'hoob3rt/lualine.nvim'
   Plug 'sainnhe/everforest'
   Plug 'tpope/vim-commentary'
+  Plug 'gruvbox-community/gruvbox'
+  Plug 'khaveesh/vim-fish-syntax'
 
   "LSP 
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
+
+  "SNIPPET ENGINE
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
 
   "AUTOCOMPLETION USING NVIM-CMP
   Plug 'hrsh7th/nvim-cmp'
@@ -81,7 +89,8 @@ endif
 let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
 
-colorscheme everforest
+" colorscheme everforest
+colorscheme gruvbox
 ""}}}
 
 " CUSTOM AUGROUPS{{{
@@ -91,5 +100,11 @@ colorscheme everforest
     autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
   augroup END
 " }}}
+"
+  augroup indent
+    "highlight leading spaces (helps in highlighting indentation)
+    autocmd!
+    autocmd BufEnter,BufReadPost,BufAdd * match CursorColumn /^\ \+/ 
+  augroup END
 " }}}
 
