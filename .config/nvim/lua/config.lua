@@ -164,6 +164,6 @@ require'nvim-treesitter.configs'.setup {
 -- =======================LUALINE SETUP=====================================
 require('lualine').setup({
   options = {
-    theme = 'gruvbox',
+    theme = 'material',
   }
 })

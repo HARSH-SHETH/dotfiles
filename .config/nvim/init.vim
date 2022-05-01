@@ -13,7 +13,7 @@
   set runtimepath^=~/.vim runtimepath+=~/.vim/after
   let &packpath = &runtimepath
   source ~/.vim/vimrc
-  set background=dark
+  set background=light
   "display the current line and column in which the cursor is present
   set cursorline nocursorcolumn
   "undofile after closing
@@ -38,6 +38,7 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'sainnhe/everforest'
   Plug 'tpope/vim-commentary'
   Plug 'gruvbox-community/gruvbox'
+  Plug 'marko-cerovac/material.nvim'
   Plug 'khaveesh/vim-fish-syntax'
 
   "LSP 
@@ -86,11 +87,9 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-
+let g:material_style = "lighter"
 " colorscheme everforest
-colorscheme gruvbox
+colorscheme material
 ""}}}
 
 " CUSTOM AUGROUPS{{{
