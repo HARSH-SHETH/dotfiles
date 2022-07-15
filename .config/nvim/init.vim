@@ -36,9 +36,10 @@ call plug#begin('~/.config/nvim/plugged/')
   Plug 'c0r73x/colorizer'
   Plug 'hoob3rt/lualine.nvim'
   Plug 'sainnhe/everforest'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
   Plug 'gruvbox-community/gruvbox'
-  Plug 'marko-cerovac/material.nvim'
   Plug 'khaveesh/vim-fish-syntax'
 
   "LSP 
@@ -87,9 +88,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:material_style = "lighter"
-" colorscheme everforest
-colorscheme material
+"tokyonight config
+colorscheme tokyonight
 ""}}}
 
 " CUSTOM AUGROUPS{{{
@@ -105,5 +105,9 @@ colorscheme material
     autocmd!
     autocmd BufEnter,BufReadPost,BufAdd * match CursorColumn /^\ \+/ 
   augroup END
-" }}}
 
+  augroup cp
+    autocmd!
+    autocmd BufNewFile *.cpp 0r ~/.skeleton.cpp | exe "normal! /while\<cr>:noh\<cr>"
+  augroup END
+" }}}
