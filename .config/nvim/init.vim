@@ -13,7 +13,6 @@
   set runtimepath^=~/.vim runtimepath+=~/.vim/after
   let &packpath = &runtimepath
   source ~/.vim/vimrc
-  set background=light
   "display the current line and column in which the cursor is present
   set cursorline nocursorcolumn
   "undofile after closing
@@ -89,7 +88,7 @@ if (has("termguicolors"))
 endif
 
 "tokyonight config
-colorscheme tokyonight
+colorscheme everforest
 ""}}}
 
 " CUSTOM AUGROUPS{{{
